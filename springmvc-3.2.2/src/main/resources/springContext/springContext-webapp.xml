@@ -14,18 +14,13 @@
        http://www.springframework.org/schema/util
        http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
-    <context:annotation-config/>
+    <mvc:annotation-driven/>
 
-    <context:component-scan base-package="com.appspot.androidbootstrap" use-default-filters="false">
+    <context:component-scan base-package="com.papcloud.spring.controller" use-default-filters="false">
         <context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
     </context:component-scan>
 
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/views/"/>
-        <property name="suffix" value=".jsp"/>
-    </bean>
-
-    <!-- json hadler -->
+    <!-- json handler -->
     <bean id="jsonHttpMessageConverter"
           class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
         <property name="supportedMediaTypes" value="application/json"/>
@@ -38,6 +33,5 @@
             </list>
         </property>
     </bean>
-    <mvc:annotation-driven/>
 
 </beans>

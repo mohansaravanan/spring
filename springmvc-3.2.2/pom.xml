@@ -6,18 +6,17 @@
 
     <groupId>com.papcloud.spring</groupId>
     <artifactId>springmvc</artifactId>
-    <version>1.0-SNAPSHOT</version>
-
+    <version>1.0</version>
+    <packaging>war</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.2.3.RELEASE</spring.version>
     </properties>
 
-
     <dependencies>
 
-        <!-- Compile/runtime dependencies -->
+        <!-- servlet dependency -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -30,12 +29,7 @@
             <version>1.2</version>
         </dependency>
 
-        <!-- spring -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+        <!-- spring dependency -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -44,6 +38,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
             <version>${spring.version}</version>
         </dependency>
         <dependency>
@@ -62,20 +61,36 @@
             <version>${spring.version}</version>
         </dependency>
 
-        <!-- Jackson -->
+        <!-- Jackson dependency -->
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>1.9.12</version>
         </dependency>
-
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-core-asl</artifactId>
             <version>1.9.12</version>
         </dependency>
-
-
     </dependencies>
+
+
+    <build>
+        <!-- final war name -->
+        <finalName>springmvc-3.2.2</finalName>
+
+        <!-- tomcat6 plugin -->
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>tomcat-maven-plugin</artifactId>
+                <configuration>
+                    <port>8080</port>
+                    <path>/${project.build.finalName}</path>
+                </configuration>
+
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

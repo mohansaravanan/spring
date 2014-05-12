@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class HelloWorldController {
+public class StatusController {
 
     @ResponseBody
-    @RequestMapping(value = "/helloWorld", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> helloWorld() {
-
-        return new ResponseEntity<String>("{\"status\": \"OK\"}", HttpStatus.ACCEPTED);
+    @RequestMapping(value = "/status", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> getStatus() {
+        return new ResponseEntity<String>("{\"Status\": \"Ok\"}", HttpStatus.ACCEPTED);
     }
+
 }
