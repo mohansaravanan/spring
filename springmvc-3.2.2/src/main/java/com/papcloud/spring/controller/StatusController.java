@@ -1,20 +1,31 @@
 package com.papcloud.spring.controller;
 
-import org.springframework.http.HttpStatus;
+import com.papcloud.spring.service.StatusService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * Created by mohan.saravanan on 13/05/2014.
+ */
 @Controller
 public class StatusController {
 
+    private StatusService statusService;
+
+    @Autowired
+    public StatusController(StatusService statusService) {
+        this.statusService = statusService;
+    }
+
     @ResponseBody
     @RequestMapping(value = "/status", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> getStatus() {
-        return new ResponseEntity<String>("{\"Status\": \"Ok\"}", HttpStatus.ACCEPTED);
+    public StatusJson findStatus() {
+        return new StatusJson(statusService.getStatus());
     }
+
 
 }

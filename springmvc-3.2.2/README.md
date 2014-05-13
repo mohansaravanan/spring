@@ -1,6 +1,6 @@
 This project for create sample spring mvc service.
 
-Do below steps to run the project
+Do the below steps to run the project
 
 CD to springmvc-3.2.2
 
